@@ -1,6 +1,6 @@
 from data import db_session
 from flask import Flask, make_response, jsonify
-import cool
+import cool, dubble_cool
 from flask_restful import Api
 
 
@@ -12,6 +12,8 @@ def main():
     db_session.global_init("db/blogs.db")
     api.add_resource(cool.UsersResource, '/api/v2/users/<int:user_id>')
     api.add_resource(cool.UsersListRes, '/api/v2/users')
+    api.add_resource(dubble_cool.JobsResource, '/api/v2/jobs/<int:job_id>')
+    api.add_resource(dubble_cool.JobsListRes, '/api/v2/jobs/')
     app.run(debug=True)
 
 
